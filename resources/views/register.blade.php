@@ -233,43 +233,39 @@
     <div class="container">
         <div class="header">
             <h1>Create Account</h1>
-            <p>Join our community and get started</p>
         </div>
 
         <div class="form-container">
-            <form id="registerForm">
+            <form method="POST" action="{{ route('register.submit') }}">
+                @csrf
                 <div class="name-fields">
                     <div class="form-group">
                         <label for="firstName">Name</label>
                         <i class="fas fa-user"></i>
-                        <input type="text" id="firstName" placeholder="Enter your first name" required>
+                        <input type="text" id="firstName" name="name" placeholder="Enter your first name" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <i class="fas fa-envelope"></i>
-                    <input type="email" id="email" placeholder="Enter your email address" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="password" placeholder="Create a strong password" required>
-                    <div class="password-strength">
-                        <div class="strength-meter" id="strengthMeter"></div>
-                    </div>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                 </div>
                 <div class="form-group">
                     <label for="age">Age</label>
                     <i class="fas fa-user-clock"></i>
                     <input type="number" id="age" name="age" placeholder="Enter your age" required>
                 </div>
+                   <div class="form-group">
+                    <label for="password">Password</label>
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                </div>
 
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                    <input type="password" id="confirmPassword" name="password_confirmation" placeholder="Confirm your password" required>
                 </div>
 
                 <div class="terms">
@@ -281,7 +277,7 @@
                 <button type="submit" class="btn">Create Account</button>
 
                 <div class="login-link">
-                    <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                    <p>Already have an account? <a href="{{route('login')}}">Sign in here</a></p>
                 </div>
             </form>
         </div>

@@ -244,17 +244,18 @@
         </div>
         
         <div class="form-container">
-            <form id="loginForm">
+            <form method="POST" action="{{ route('login.submit') }}">
+                @csrf
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <i class="fas fa-envelope"></i>
-                    <input type="email" id="email" placeholder="Enter your email address" required>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="password">Password</label>
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
                 </div>
                 
                 <div class="remember-forgot">
@@ -288,30 +289,6 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simulate login process
-            const btn = document.querySelector('.btn');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
-            btn.disabled = true;
-            
-            setTimeout(function() {
-                alert('Login successful! Welcome back.');
-                btn.innerHTML = 'Sign In';
-                btn.disabled = false;
-                document.getElementById('loginForm').reset();
-            }, 1500);
-        });
-        
-        // Add click events to social buttons
-        document.querySelectorAll('.social-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const type = this.classList[1];
-                alert(`Sign in with ${type} would be implemented here.`);
-            });
-        });
-    </script>
+   
 </body>
 </html>
