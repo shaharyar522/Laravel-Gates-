@@ -61,13 +61,20 @@ class UserController extends Controller
         ])->onlyInput('email');
     }
 
+    public function ViewPrfoile()
+    {
+        return view('profile');
+    }
+
+    public function ViewPost()
+    {
+        return view('posts');
+    }
+
     // Handle logout
     public function logout(Request $request)
     {
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()->route('login')->with('success', 'You have been logged out.');
+        return redirect()->route('login');
     }
 }
