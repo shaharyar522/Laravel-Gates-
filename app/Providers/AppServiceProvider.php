@@ -24,12 +24,20 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-
+        //first check this if user after login the admin then show true other wise false
         Gate::define('isAdmin', function (User $user) {
             return $user->role === 'admin'; // ✅ Check role column
         });
-        //first check this if user after login the admin then show true other wise false
 
-        
+
+        Gate::define('view-profile', function (User $user, $userprofile) {
+            return $user->id === $userprofile;
+        });
+
+        Gate::define('update-post', function(User $user, $targetuser){
+            return $user->id === $targetuser;
+        });
+
+
     }
 }

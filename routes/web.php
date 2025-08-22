@@ -19,6 +19,13 @@ Route::post('/register', [UserController::class, 'register'])->name('register.su
 
 Route::get('/dashboard',[UserController::class, 'DashboardPage'])->middleware('auth')->name('dashboard');
 
+Route::get('/profile/{id}',[UserController::class, 'ViewPrfoile'])->middleware('auth')->name('profile.show');
+Route::get('/post/{id}',[UserController::class, 'ViewPost'])->middleware('auth')->name('post.show');
+Route::get('/single-post/{id}',[UserController::class, 'UpdatePost'])->middleware('auth')->name('post.edit');
+
+
+
+
 // Logout
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
