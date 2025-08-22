@@ -238,12 +238,13 @@
 </head>
 <body>
     <div class="container">
+
         <div class="header">
             <h1>Login Account</h1>
             
         </div>
-        
         <div class="form-container">
+
             <form method="POST" action="{{ route('login.submit') }}">
                 @csrf
                 <div class="form-group">
@@ -286,6 +287,7 @@
                     <p>Don't have an account? <a href="{{route('register')}}">Register here</a></p>
                 </div>
             </form>
+
         </div>
     </div>
 

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Auth\Access\Gate;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,13 +16,20 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
-    /**
+    /*
+     * 
      * Bootstrap any application services.
+     * 
      */
+
     public function boot(): void
     {
-        Gate::define('isAdmin',function(User $user){
 
+        Gate::define('isAdmin', function (User $user) {
+            return $user->role === 'admin'; // ✅ Check role column
         });
+        //first check this if user after login the admin then show true other wise false
+
+        
     }
 }

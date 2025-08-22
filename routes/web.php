@@ -16,9 +16,8 @@ Route::get('/register', [UserController::class, 'showRegister'])->name('register
 Route::post('/register', [UserController::class, 'register'])->name('register.submit');
 
 // Dashboard (only logged in users)
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
+
+Route::get('/dashboard',[UserController::class, 'DashboardPage'])->middleware('auth')->name('dashboard');
 
 // Logout
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');

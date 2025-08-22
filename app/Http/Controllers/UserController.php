@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -60,6 +61,19 @@ class UserController extends Controller
             'email' => 'Invalid credentials.',
         ])->onlyInput('email');
     }
+
+
+    public function DashboardPage()
+    {
+        //Date ko use kya hian wahn hum ny u sko  ek condition dalli ahin
+        if(Gate::allows('isAdmin')){
+            return view('dashboard');
+        }else
+        {
+            return "Access Denies";
+        }
+    }
+
 
     public function ViewPrfoile()
     {
