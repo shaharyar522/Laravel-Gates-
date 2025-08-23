@@ -110,11 +110,29 @@ class UserController extends Controller
 
     public function UpdatePost($postid)
     {
+
+        // 1. Find the post from the database by its id
         $post = Post::find($postid);
+
+        // 2. Get the owner id of the post
         $targetUser = $post->user_id;
+
+        // 3. Check the Gate rule ("update-post") 
+        // -> compare logged-in user's id with $targetUser
+        //         yahaan hum Gate ko bolte hain:
+
+        // "ab ye rule chalao aur is value ke sath check karo."
+
+        // pehla parameter 'update-post' → kaunsa rule chalana hai.
+
+        // doosra parameter $targetUser → rule ke andar jo $targetuser hota hai, usko ye value milegi
         
         Gate::authorize('update-post', $targetUser);
-        
+
+
+
+
+        // 4. If authorized, return the post (or continue update)
         return $post;
     }
 
